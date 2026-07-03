@@ -5,9 +5,6 @@ interface StudentOperations{
     void searchById();
     void searchByName();
     void updateStudent();
-    void sortByName();
-    void sortByTotal();
-    void sortByAverage();
     void deleteStudent();
 }
 abstract class Person{
@@ -190,24 +187,6 @@ class StudentManager implements StudentOperations{
         System.out.println("Student Not Found.");
     }
     @Override
-    public void sortByName(){
-        Collections.sort(students,Comparator.comparing(Student::getName));
-        System.out.println("Sorted by Name.");
-        viewStudents();
-    }
-    @Override
-    public void sortByTotal(){
-        Collections.sort(students,(a, b) -> b.getTotal() - a.getTotal());
-        System.out.println("Sorted by Total.");
-        viewStudents();
-    }
-    @Override
-    public void sortByAverage(){
-        Collections.sort(students,(a, b) -> Double.compare(b.getAverage(),a.getAverage()));
-        System.out.println("Sorted by Average.");
-        viewStudents();
-    }
-    @Override
     public void deleteStudent(){
         System.out.print("Enter Student ID:");
         int id=sc.nextInt();
@@ -235,11 +214,8 @@ public class Main{
             System.out.println("3. Search by ID");
             System.out.println("4. Search by Name");
             System.err.println("5. Update Student");
-            System.out.println("6. Sort by Name");
-            System.out.println("7. Sort by Total");
-            System.out.println("8. Sort by Average");
-            System.out.println("9. Delete Student");
-            System.out.println("10. Exit");
+            System.out.println("6. Delete Student");
+            System.out.println("7. Exit");
             System.out.print("Enter your choice: ");
             int choice=sc.nextInt();
             switch(choice){
@@ -259,18 +235,9 @@ public class Main{
                     manager.updateStudent();
                     break;
                 case 6:
-                    manager.sortByName();
-                    break;
-                case 7:
-                    manager.sortByTotal();
-                    break;
-                case 8:
-                    manager.sortByAverage();
-                    break;
-                case 9:
                     manager.deleteStudent();
                     break;
-                case 10:
+                case 7:
                     System.out.println("Thank You...");
                     System.exit(0);
                     break;
@@ -279,4 +246,4 @@ public class Main{
             }
         }
     }
-}
+            }
