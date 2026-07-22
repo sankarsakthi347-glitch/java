@@ -129,7 +129,6 @@ public class Main {
                     break;
                 default:
                     System.out.println("Invalid Choice");
-
             }
         } while(choice != 13);
         sc.close();
